@@ -2,6 +2,7 @@ package com.asingleplace.mailer.model;
 
 import javax.persistence.Id;
 
+import com.google.appengine.api.datastore.GeoPt;
 import com.googlecode.objectify.Key;
 
 public class Unit {
@@ -11,9 +12,7 @@ public class Unit {
 	private UnitType type = UnitType.Ward;
 	private Key<Unit> parent;
 	// private Key<User>[] admins;
-	private String location;
-	private Integer latitude;
-	private Integer longitude;
+	private GeoPt location;
 
 	public Long getId() {
 		return id;
@@ -47,28 +46,12 @@ public class Unit {
 		this.parent = parent;
 	}
 
-	public String getLocation() {
+	public GeoPt getLocation() {
 		return location;
 	}
 
-	public void setLocation(String location) {
+	public void setLocation(GeoPt location) {
 		this.location = location;
-	}
-
-	public Integer getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(Integer latitude) {
-		this.latitude = latitude;
-	}
-
-	public Integer getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(Integer longitude) {
-		this.longitude = longitude;
 	}
 
 }

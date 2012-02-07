@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Id;
 
+import com.google.appengine.api.datastore.Category;
+import com.google.appengine.api.datastore.GeoPt;
 import com.googlecode.objectify.Key;
 
 public class Email {
@@ -13,9 +15,8 @@ public class Email {
 	private String body;
 	private Key<User> writer;
 	private Date creationDate;
-	private Integer latitude;
-	private Integer longitude;
-	private Key<Tag>[] tags;
+	private GeoPt location;
+	private Key<Category>[] tags;
 
 	public Long getId() {
 		return id;
@@ -57,27 +58,19 @@ public class Email {
 		this.creationDate = creationDate;
 	}
 
-	public Integer getLatitude() {
-		return latitude;
+	public GeoPt getLocation() {
+		return location;
 	}
 
-	public void setLatitude(Integer latitude) {
-		this.latitude = latitude;
+	public void setLocation(GeoPt location) {
+		this.location = location;
 	}
 
-	public Integer getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(Integer longitude) {
-		this.longitude = longitude;
-	}
-
-	public Key<Tag>[] getTags() {
+	public Key<Category>[] getTags() {
 		return tags;
 	}
 
-	public void setTags(Key<Tag>[] tags) {
+	public void setTags(Key<Category>[] tags) {
 		this.tags = tags;
 	}
 
