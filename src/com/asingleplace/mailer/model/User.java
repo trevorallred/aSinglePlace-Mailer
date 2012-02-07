@@ -9,16 +9,16 @@ import com.googlecode.objectify.annotation.Unindexed;
 
 @Unindexed
 public class User {
-	
+
 	@Id
 	private String email;
 	private String firstName;
 	private String lastName;
-	private UserType type;
-	private boolean emailConfirmed = false;
+	private UserType type = UserType.Reader;
+	private Boolean emailConfirmed = false;
 	// private Date birthDay;
-	private Boolean gender;
-	private boolean lds = true;
+	private Boolean male;
+	private Boolean lds = true;
 	private Key<Category>[] tags;
 	private Key<Unit> unit;
 	private GeoPt location;
@@ -42,6 +42,8 @@ public class User {
 	}
 
 	public String getFirstName() {
+		if (firstName == null)
+			return "";
 		return firstName;
 	}
 
@@ -50,6 +52,8 @@ public class User {
 	}
 
 	public String getLastName() {
+		if (lastName == null)
+			return "";
 		return lastName;
 	}
 
@@ -73,19 +77,19 @@ public class User {
 		this.emailConfirmed = emailConfirmed;
 	}
 
-	public Boolean getGender() {
-		return gender;
+	public Boolean isMale() {
+		return male;
 	}
 
-	public void setGender(Boolean gender) {
-		this.gender = gender;
+	public void setMale(Boolean gender) {
+		this.male = gender;
 	}
 
-	public boolean isLds() {
+	public Boolean isLds() {
 		return lds;
 	}
 
-	public void setLds(boolean lds) {
+	public void setLds(Boolean lds) {
 		this.lds = lds;
 	}
 
@@ -112,7 +116,7 @@ public class User {
 	public void setLocation(GeoPt location) {
 		this.location = location;
 	}
-
+	
 	public Integer getMaxDistance() {
 		return maxDistance;
 	}
@@ -120,5 +124,4 @@ public class User {
 	public void setMaxDistance(Integer maxDistance) {
 		this.maxDistance = maxDistance;
 	}
-
 }

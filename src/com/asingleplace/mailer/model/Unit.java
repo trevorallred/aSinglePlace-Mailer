@@ -5,10 +5,10 @@ import javax.persistence.Id;
 import com.google.appengine.api.datastore.GeoPt;
 import com.googlecode.objectify.Key;
 
-public class Unit {
+public class Unit implements Comparable<Unit> {
 	@Id
 	private Long id;
-	private String name;
+	private String name = "";
 	private UnitType type = UnitType.Ward;
 	private Key<Unit> parent;
 	// private Key<User>[] admins;
@@ -52,6 +52,10 @@ public class Unit {
 
 	public void setLocation(GeoPt location) {
 		this.location = location;
+	}
+
+	public int compareTo(Unit o) {
+		return name.compareTo(o.name);
 	}
 
 }

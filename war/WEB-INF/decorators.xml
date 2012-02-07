@@ -1,0 +1,10 @@
+<decorators defaultdir="/decorators">
+	<decorator name="main" page="main.jsp">
+		<pattern>/</pattern>
+		<pattern>/*.jsp</pattern>
+	</decorator>
+	<decorator name="ignoreMe">
+		<pattern>/*ajax*</pattern>
+		<pattern>/*json*</pattern>
+	</decorator>
+</decorators>

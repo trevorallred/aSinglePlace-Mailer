@@ -4,6 +4,27 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
+	<filter>
+		<filter-name>sitemesh</filter-name>
+		<filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>sitemesh</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<jsp-config>
+		<taglib>
+			<taglib-uri>sitemesh-page</taglib-uri>
+			<taglib-location>/WEB-INF/taglibs/sitemesh-page.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>sitemesh-decorator</taglib-uri>
+			<taglib-location>/WEB-INF/taglibs/sitemesh-decorator.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
