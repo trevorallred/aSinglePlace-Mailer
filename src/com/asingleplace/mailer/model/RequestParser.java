@@ -22,7 +22,7 @@ public class RequestParser {
 			Long unitID = getLong("ward");
 			if (unitID == null)
 				unitID = getLong("stake");
-			if (unitID > 0) {
+			if (unitID != null && unitID > 0) {
 				user.setUnit(new Key<Unit>(Unit.class, unitID));
 			}
 		} else {
@@ -43,7 +43,7 @@ public class RequestParser {
 			return null;
 		if (value.isEmpty())
 			return null;
-		
+
 		return Integer.parseInt(value);
 	}
 
@@ -79,6 +79,12 @@ public class RequestParser {
 		if (parameter.equals("null"))
 			return null;
 		return parameter;
+	}
+
+	public String getBaseURL() {
+		String url = request.getRequestURL().toString();
+		int indexOfUri = url.indexOf(request.getRequestURI());
+		return url.substring(0, indexOfUri);
 	}
 
 }

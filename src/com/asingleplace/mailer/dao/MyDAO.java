@@ -32,7 +32,7 @@ public class MyDAO extends DAOBase {
 		}
 	}
 
-	private User getUser(String email) {
+	public User getUser(String email) {
 		if (email == null || email.trim().isEmpty())
 			return null;
 		email = email.trim();
@@ -43,6 +43,10 @@ public class MyDAO extends DAOBase {
 	public User putUser(User user) {
 		ofy.put(user);
 		return user;
+	}
+
+	public void removeUser(String email) {
+		ofy.delete(User.class, email);
 	}
 
 	public Unit getUnit(Long id) {

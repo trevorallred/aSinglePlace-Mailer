@@ -57,6 +57,10 @@ public class User {
 		return lastName;
 	}
 
+	public String getFullName() {
+		return (getFirstName() + " " + getLastName()).trim();
+	}
+	
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}

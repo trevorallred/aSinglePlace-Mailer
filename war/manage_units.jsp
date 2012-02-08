@@ -1,3 +1,5 @@
+<%@page import="com.google.appengine.api.users.UserServiceFactory"%>
+<%@page import="com.google.appengine.api.users.UserService"%>
 <%@page import="com.googlecode.objectify.Key"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -8,6 +10,13 @@
 <%@ page import="com.asingleplace.mailer.model.Unit"%>
 <jsp:useBean id="dao" class="com.asingleplace.mailer.dao.MyDAO" />
 <%
+	UserService userService = UserServiceFactory.getUserService();
+	com.google.appengine.api.users.User user = userService.getCurrentUser();
+	
+	if (user == null) {
+	    response.sendRedirect(userService.createLoginURL(request.getRequestURI()));
+	}
+
 	RequestParser requestParser = new RequestParser(request);
 	String button = request.getParameter("button");
 	Unit unit = new Unit();
